@@ -1,5 +1,5 @@
 import { Client, ID, Databases, Storage, Query } from "appwrite";
-import conf from "../conf/Conf";
+import conf from "../conf/conf";
 // query is used to filter, sort, and paginate data
 export class DatabaseService{
     client = new Client();
