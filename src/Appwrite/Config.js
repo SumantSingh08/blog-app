@@ -1,4 +1,4 @@
-import { Client, ID, Databases, Storage, Query } from "appwrite";
+import { Client, ID, Databases, Storage, Query, Permission, Role } from "appwrite";
 import conf from "../conf/conf";
 // query is used to filter, sort, and paginate data
 export class DatabaseService{
@@ -24,7 +24,13 @@ export class DatabaseService{
                 status,
                 featuredImage,
                 userId
-            } )
+            },
+        [
+            Permission.read(Role.user(userId)),
+            Permission.update(Role.user(userId)),
+            Permission.delete(Role.user(userId)),
+        ]
+        )
         } catch (error) {
             console.log("appwrite : post :error", error);
         }
