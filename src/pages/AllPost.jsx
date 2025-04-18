@@ -5,9 +5,16 @@ function AllPost() {
     const [posts, setposts] = useState([]);
     useEffect(() =>{
         databaseService.getPosts([])
-        .then((posts) =>{
-            console.log("Allposts:", posts)
-            setposts(posts.documents)
+        .then((posts) => {
+          console.log("Allposts:", posts);
+          if (posts && posts.documents) {
+            setposts(posts.documents);
+          } else {
+            console.error("Unexpected posts response:", posts);
+          }
+        })
+        .catch((err) => {
+          console.error("Failed to fetch posts:", err);
         });
     },[])
     return (
@@ -16,9 +23,7 @@ function AllPost() {
                 <div className='flex flex-wrap '>
                     {posts.map((post) =>(
                         <div key={post.$id} className='p-3 w-1/4'>
-                            <PostCard {...post
-                                
-                            }/>
+                            <PostCard post={post}/>
                         </div>
                     ))}
                 </div>
