@@ -33,15 +33,16 @@ export const  authReducer = authSlice.reducer;
 const initialStatePost = {
     posts: [],
 }
-console.log(initialStatePost)
+
 
 const postSlice = createSlice({
     name: "post",
     initialState: initialStatePost,
     reducers: {
         addPost: (state, action) =>{
-            console.log("action.payload:", action.payload)
+            
             state.posts.push(action.payload);
+            
         },
 
         removePost: (state, action) =>{

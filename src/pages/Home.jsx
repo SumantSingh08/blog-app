@@ -7,6 +7,7 @@ function Home() {
     const [posts, setPosts] = useState([]);
     const authStatus = useSelector((state) => state.auth.status);
     const authUser = useSelector((state) => state.auth.userData);
+    console.log("home post", posts)
     useEffect(() => {
         if (authUser !== null) {
             databaseService.getPosts()
@@ -29,7 +30,7 @@ function Home() {
                 <div className="flex flex-wrap">
                     <div className="p-2 w-full">
                         <h1 className="text-2xl font-bold hover:text-gray-500">
-                            Login to create posts
+                            Login to Read Posts
                         </h1>
                     </div>
                 </div>
@@ -37,16 +38,30 @@ function Home() {
         </div>
         )
     }
-
+    
+    if (posts.length === 0) {
+        return (
+            <div className="w-full py-8 mt-4 text-center">
+                <Container>
+                    <div className="flex flex-wrap">
+                        <div className="p-2 w-full">
+                            <h1 className="text-2xl font-bold hover:text-gray-500">
+                                No Posts Available
+                            </h1>
+                        </div>
+                    </div>
+                </Container>
+            </div>
+        )
+        
+    }
     return (
         <div className='w-full py-8'>
             <Container>
                 <div className='flex flex-wrap '>
                     {posts && posts.map((post) => (
                         <div key={post.$id} className='p-3 w-1/4'>
-                            <PostCard {...post
-
-                            } />
+                            <PostCard post={post} />
                         </div>
                     ))}
                 </div>

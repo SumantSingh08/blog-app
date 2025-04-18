@@ -81,10 +81,14 @@ export class DatabaseService{
     // file uplode service
     async uploadFile(file){
         try {
-            const storageData =  await this.storage.createFile(conf.appwriteBucketId, ID.unique(), file)
+            const storageData =  await this.storage.createFile(conf.appwriteBucketId, ID.unique(), file
+        ,
+        [
+            Permission.read(Role.any())
+        ]
+        )
             if (storageData) {
-                console.log('storageData', storageData);
-                
+
                 return storageData;
             }
         } catch (error) {
@@ -107,7 +111,12 @@ export class DatabaseService{
 
     getFilePreview(fileId){
         try {
-            return this.storage.getFilePreview(conf.appwriteBucketId, fileId)
+            const result =  this.storage.getFilePreview(conf.appwriteBucketId, fileId)
+            console.log("getFilePreview", result);
+            if (result) {
+                return result;
+            }
+            
         } catch (error) {
             console.log("appwrite : getfilePreviw : error", error);
             return false;
