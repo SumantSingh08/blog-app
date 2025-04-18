@@ -4,7 +4,7 @@ import { Container, PostCard } from '../components';
 function AllPost() {
     const [posts, setposts] = useState([]);
     useEffect(() =>{
-        databaseService.getPosts([])
+        databaseService.getPosts()
         .then((posts) => {
           console.log("Allposts:", posts);
           if (posts && posts.documents) {
