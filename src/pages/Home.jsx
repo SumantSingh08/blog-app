@@ -6,11 +6,12 @@ import { PostCard } from '../components';
 function Home() {
     const [posts, setPosts] = useState([]);
     const authStatus = useSelector((state) => state.auth.status);
-    const authUser = useSelector((state) => state.auth.userData);
+    const userData = useSelector((state) => state.auth.userData);
+    const userId = userData?.$id
     console.log("home post", posts)
     useEffect(() => {
-        if (authUser !== null) {
-            databaseService.getPosts()
+        if (authStatus !== null) {
+            databaseService.getPosts(userId)
                 .then((posts) => {
                     if (posts) {
                         console.log("posts:", posts)
@@ -18,12 +19,12 @@ function Home() {
                     }
                 })
         }
-    }, [authUser])
+    }, [authStatus])
 
     const authPost = useSelector((state) => state.post.posts)
     console.log("authPost:", authPost)
 
-    if (!authUser) {
+    if (!authStatus || !userId) {
         return (
             <div className="w-full py-8 mt-4 text-center">
             <Container>

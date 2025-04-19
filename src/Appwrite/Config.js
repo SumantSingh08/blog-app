@@ -14,7 +14,7 @@ export class DatabaseService{
         this.database = new Databases(this.client)
         this.storage = new Storage(this.client)
     };
-
+    
     //  post service
     async creatPost ({title, slug, content, status, featuredImage, userId}) {
         try {
@@ -69,9 +69,11 @@ export class DatabaseService{
         }
     };
 
-    async getPosts(queries=[Query.equal("status", "active")]){
+    async getPosts(userId){
         try {
-            return this.database.listDocuments(conf.appwriteDatabaseId, conf.appwriteCollectionId, queries)
+            return this.database.listDocuments(conf.appwriteDatabaseId, conf.appwriteCollectionId, [Query.equal("userId", [userId])],
+        
+        )
         } catch (error) {
             console.log("appwrite : getPosts : error", error);
             return false;
