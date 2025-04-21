@@ -113,7 +113,7 @@ export class DatabaseService{
 
     getFilePreview(fileId){
         try {
-            const result =  this.storage.getFilePreview(conf.appwriteBucketId, fileId)
+            const result =  this.storage.getFileView(conf.appwriteBucketId, fileId)
             console.log("getFilePreview", result);
             if (result) {
                 return result;
