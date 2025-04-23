@@ -13,7 +13,7 @@ function LogoutBtn() {
         .catch((error) => console.log('Logout Error', error))
     }
     return (
-        <button onClick={logoutHander} className='inline-bock px-2 py-2 duration-200 bg-red-500 font-normal rounded-lg cursor-pointer'>
+        <button onClick={logoutHander} className='inline-bock px-3 py-2 duration-200 font-bold bg-red-500 text-white  rounded-full cursor-pointer'>
             Logout
         </button>
     )

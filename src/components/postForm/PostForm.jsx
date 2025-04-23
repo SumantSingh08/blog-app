@@ -6,7 +6,6 @@ import databaseService from '../../Appwrite/Config';
 import Input from '../Input';
 import Button from '../Button';
 import Select from '../Select';
-import FTE from '../FTE';
 import RTE from '../RTE';
 import { useDispatch } from 'react-redux';
 import AddPost from '../../pages/AddPost';
@@ -95,7 +94,7 @@ function PostForm({post}) {
     }, [watch, setValue, slugTransform])
 
     return (
-        <form onSubmit={handleSubmit(submit)} className="flex flex-wrap bg-stone-300 p-4">
+        <form onSubmit={handleSubmit(submit)} className="flex flex-wrap bg-gray-400 rounded-xl p-4">
         <div className="w-2/3 px-2">
             <Input
                 label="Title :"
