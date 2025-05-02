@@ -48,7 +48,7 @@ function AllPost() {
                             </div>
                         )) :
                             <div className='p-2 w-full'>
-                                <h1 className='text-2xl text-white font-bold hover:text-gray-500'>
+                                <h1 className='text-2xl text-center text-white font-bold hover:text-gray-500'>
                                     No Posts Found
                                 </h1>
                             </div>
