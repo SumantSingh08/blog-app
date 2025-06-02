@@ -37,14 +37,14 @@ function Header() {
         }
     ]
     return (
-        <header className='w-full md:max-w-3xl lg:max-w-5xl text-md shadow-lg rounded-md md:rounded-full md:my-4 mx-auto   md:px-10  text-gray-700  bg-white text-lg'> 
-                <nav className='w-full md:flex py-1  px-1 items-center md:justify-between md:gap-1'>
+        <header className='w-full md:max-w-3xl lg:max-w-5xl text-md shadow-lg  md:rounded-full md:my-4 mx-auto   md:px-10  text-gray-700  bg-white text-lg'> 
+                <nav className='w-full md:flex py-2  px-1 items-center md:justify-between md:gap-1'>
                     <div className='hidden  md:block  md:w-[30%] md:pr-6 font-bold my-auto'>
                         <Link>
                             <Logo  />
                         </Link>
                     </div>
-                    <ul className='flex gap-0.5 justify-around md:w-[70%]  md:gap-4 text-center items-center '>
+                    <ul className='flex gap-0.5 justify-evenly md:w-[70%]  md:gap-4 text-center items-center '>
                         {navItems.map((items) =>
                             items.active ? (
                                 <li key={items.name}>
