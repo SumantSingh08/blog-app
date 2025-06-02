@@ -39,15 +39,15 @@ function AllPost() {
     }
     
         return (
-            <div className='w-full py-8'>
+            <div className='w-full min-h-screen py-8'>
                 <Container>
-                    <div className='flex flex-wrap '>
+                    <div className='flex flex-wrap gap-2 md:gap-6 justify-evenly '>
                         {posts && posts.length !== 0? posts.map((post) => (
-                            <div key={post.$id} className='p-3 w-1/4'>
+                            <div key={post.$id} className='p-3 md:w-1/5'>
                                 <PostCard post={post} />
                             </div>
                         )) :
-                            <div className='p-2 w-full'>
+                            <div className='w-full min-h-screen p-2 '>
                                 <h1 className='text-2xl text-center text-white font-bold hover:text-gray-500'>
                                     No Posts Found
                                 </h1>

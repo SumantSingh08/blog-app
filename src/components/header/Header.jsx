@@ -37,19 +37,18 @@ function Header() {
         }
     ]
     return (
-        <header className='max-w-5xl rounded-full my-4 mx-auto py-1.5 px-10 shadow text-gray-700  bg-white text-lg'>
-            <Container >
-                <nav className='flex'>
-                    <div className='mr-4 font-bold my-auto'>
+        <header className='w-full md:max-w-3xl lg:max-w-5xl text-md shadow-lg rounded-md md:rounded-full md:my-4 mx-auto   md:px-10  text-gray-700  bg-white text-lg'> 
+                <nav className='w-full md:flex py-1  px-1 items-center md:justify-between md:gap-1'>
+                    <div className='hidden  md:block  md:w-[30%] md:pr-6 font-bold my-auto'>
                         <Link>
-                            <Logo width="70px" />
+                            <Logo  />
                         </Link>
                     </div>
-                    <ul className='flex gap-4 ml-auto'>
+                    <ul className='flex gap-0.5 justify-around md:w-[70%]  md:gap-4 text-center items-center '>
                         {navItems.map((items) =>
                             items.active ? (
                                 <li key={items.name}>
-                                    <button onClick={() => navigate(items.slug)} className='inline-block px-3 py-2 duration-300 rounded-xl cursor-pointer  text-black font-bold'>
+                                    <button onClick={() => navigate(items.slug)} className='w-full h-auto px-2 py-1  text-sm md:text-lg inline-block  duration-300 rounded-md cursor-pointer outline-hidden  text-black font-bold font-sans hover:bg-gray-300 '>
                                         {items.name}
                                     </button>
                                 </li>
@@ -62,7 +61,6 @@ function Header() {
                         )}  {/* if condition true then exicute () */}
                     </ul>
                 </nav>
-            </Container>
         </header>
     )
 }

@@ -25,11 +25,14 @@ export class DatabaseService{
                 featuredImage,
                 userId
             },
-        [
-            Permission.read(Role.user(userId)),
-            Permission.update(Role.user(userId)),
-            Permission.delete(Role.user(userId)),
-        ]
+            [
+                Permission.read(Role.any()),                         // anyone can read
+  Permission.create(Role.any()),                       // anyone (even not logged in) can create
+  Permission.update(Role.user(userId)),                // only that user can update
+  Permission.delete(Role.user(userId)), 
+
+            ]
+        
         )
         } catch (error) {
             console.log("appwrite : post :error", error);
@@ -81,14 +84,18 @@ export class DatabaseService{
     };
 
     // file uplode service
-    async uploadFile(file){
+    async uploadFile(file, userId){
         try {
-            const storageData =  await this.storage.createFile(conf.appwriteBucketId, ID.unique(), file
-        ,
+            const storageData =  await this.storage.createFile(conf.appwriteBucketId, ID.unique(), file,
+        
         [
-            Permission.read(Role.any())
+          Permission.read(Role.any()),
+            
+                Permission.update(Role.user(userId)),          // allow update for owner only
+                Permission.delete(Role.user(userId)) 
         ]
-        )
+    )
+        
             if (storageData) {
 
                 return storageData;

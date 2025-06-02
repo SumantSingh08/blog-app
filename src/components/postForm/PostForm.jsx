@@ -45,14 +45,14 @@ function PostForm({post}) {
             }
         }  else {
 
-            const file =  await databaseService.uploadFile(data.image[0]) 
+            const file =  await databaseService.uploadFile(data.image[0], userData?.$id); 
             
             if (file) {
                 
                 const fileId = file.$id;
                 console.log("fileId:", fileId)
                 //data.featuredImage = fileId;
-                const dbPost = await databaseService.creatPost(  { ...data, userId : userData.$id, featuredImage:fileId} );
+                const dbPost = await databaseService.creatPost(  { ...data, userId : userData?.$id, featuredImage:fileId} );
                 console.log("dbPost:", dbPost)
                 if (dbPost) {
                     
@@ -94,8 +94,8 @@ function PostForm({post}) {
     }, [watch, setValue, slugTransform])
 
     return (
-        <form onSubmit={handleSubmit(submit)} className="flex flex-wrap bg-gray-400 rounded-xl p-4">
-        <div className="w-2/3 px-2">
+        <form onSubmit={handleSubmit(submit)} className="md:flex md:flex-wrap bg-gray-400 rounded-xl p-4 my-6">
+        <div className="md:w-2/3 md:px-2 ">
             <Input
                 label="Title :"
                 placeholder="Title"
@@ -114,7 +114,7 @@ function PostForm({post}) {
             <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
             {/* <FTE label="content: " name="content" control={control} defaultValue={getValues("content")}/> */}
         </div>
-        <div className="w-1/3 px-2">
+        <div className="mt-5 md:mt-0 md:w-1/3 md:px-2">
             <Input
                 label="Featured Image :"
                 type="file"

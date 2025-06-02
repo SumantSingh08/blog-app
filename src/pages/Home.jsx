@@ -34,11 +34,11 @@ function Home() {
 
     if (!authStatus || !userId) {
         return (
-            <div className="w-full py-8 mt-4 text-center">
+            <div className="w-full  py-8 mt-4 text-center">
                 <Container>
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
-                            <h1 className="text-2xl text-white font-bold hover:text-gray-500">
+                            <h1 className="text-lg md:text-2xl text-white font-bold hover:text-gray-500">
                                 Login to Read Posts
                             </h1>
                         </div>
@@ -52,11 +52,11 @@ function Home() {
         return ''
     }
     return (
-        <div className='w-full py-8'>
+        <div className='w-full min-h-screen py-8 '>
             <Container>
-                <div className='flex flex-wrap '>
+                <div className='flex flex-wrap gap-2 md:gap-4 text-center items-center justify-evenly'>
                     {posts && posts.length !== 0 ? posts.map((post) => (
-                        <div key={post.$id} className='p-3 w-1/4'>
+                        <div key={post.$id} className='p-3 md:w-1/5'>
                             <PostCard post={post} />
                         </div>
                     )) :

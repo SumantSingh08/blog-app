@@ -25,16 +25,10 @@ function App() {
   },[])
 
    return !loading ? (
-    <div className='min-h-screen flex flex-col bg-slate-700'>
-      <div className='w-full '>
+    <div className='w-full min-h-screen flex flex-col bg-slate-700'>
         <Header/>
-        <main>
-          <Outlet/>
-        </main>
-        
+        <Outlet/>
         <Footer/>
- 
-      </div>
     </div>
    ) : null
 }
