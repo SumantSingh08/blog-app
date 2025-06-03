@@ -49,10 +49,20 @@ function Home() {
     }
 
     if (loading) {
-        return ''
+        return <div className="w-full py-8 mt-16 text-center">
+                        <Container>
+                            <div className="flex flex-wrap">
+                                <div className="p-2 w-full">
+                                    <h1 className="text-lg md:text-2xl text-white font-bold hover:text-gray-500">
+                                        Loading Posts...
+                                    </h1>
+                                </div>
+                            </div>
+                        </Container>
+                    </div>
     }
     return (
-        <div className='w-full min-h-screen py-8 px-3'>
+        <div className='w-full min-h-screen py-16 md:py-28 px-3'>
             <Container>
                 <div className='flex flex-wrap gap-2 md:gap-4 text-center items-center justify-evenly'>
                     {posts && posts.length !== 0 ? posts.map((post) => (

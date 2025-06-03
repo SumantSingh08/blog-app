@@ -24,7 +24,7 @@ function AllPost() {
     },[])
     if (loading) {
         return(
-            <div className="w-full py-8 mt-4 text-center">
+            <div className="w-full py-8 mt-16 text-center">
                 <Container>
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
@@ -39,11 +39,11 @@ function AllPost() {
     }
     
         return (
-            <div className='w-full min-h-screen py-8 px-3'>
+            <div className='w-full min-h-screen py-16 md:py-28 px-3'>
                 <Container>
                     <div className='flex flex-wrap gap-2 md:gap-6 justify-evenly '>
                         {posts && posts.length !== 0? posts.map((post) => (
-                            <div key={post.$id} className='p-3 md:w-1/5'>
+                            <div key={post.$id} className='p-3 md:w-1/4'>
                                 <PostCard post={post} />
                             </div>
                         )) :

@@ -46,7 +46,7 @@ export default function Post() {
         );;
     }
     return  (
-        <div className="py-8">
+        <div className="py-16 md:py-24">
             <Container>
                 <div className="max-w-xl mx-auto flex justify-center mb-4 relative border rounded-xl p-2">
                     <img
