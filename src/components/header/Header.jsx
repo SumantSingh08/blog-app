@@ -33,22 +33,22 @@ function Header() {
         {
             name: 'Add Posts',
             slug: '/add-post',
-            active: authStatus
+            active: true
         }
     ]
     return (
-        <header className='w-full md:max-w-3xl lg:max-w-5xl text-md shadow-lg  md:rounded-full md:my-4 mx-auto   md:px-10  text-gray-700  bg-white text-lg'> 
-                <nav className='w-full md:flex py-2  px-1 items-center md:justify-between md:gap-1'>
+        <header className='w-full md:max-w-3xl lg:max-w-5xl text-md shadow-lg  md:rounded-full md:my-4 mx-auto  md:px-15  text-gray-700  bg-white text-lg '> 
+                <nav className='w-full md:flex py-2  px-1  items-center md:justify-between md:gap-1 '>
                     <div className='hidden  md:block  md:w-[30%] md:pr-6 font-bold my-auto'>
                         <Link>
                             <Logo  />
                         </Link>
                     </div>
-                    <ul className='flex gap-0.5 justify-evenly md:w-[70%]  md:gap-4 text-center items-center '>
+                    <ul className='flex gap-0.5 justify-evenly md:justify-end md:w-[70%]  md:gap-6 text-center items-center '>
                         {navItems.map((items) =>
                             items.active ? (
                                 <li key={items.name}>
-                                    <button onClick={() => navigate(items.slug)} className='w-full h-auto px-2 py-1  text-sm md:text-lg inline-block  duration-300 rounded-md cursor-pointer outline-hidden  text-black font-bold font-sans hover:bg-gray-300 '>
+                                    <button onClick={() => navigate(items.slug)} className='w-full h-auto px-2 py-1  text-sm md:text-lg inline-block  duration-300 rounded-md cursor-pointer outline-hidden  text-black font-bold font-sans hover:bg-gray-200 '>
                                         {items.name}
                                     </button>
                                 </li>

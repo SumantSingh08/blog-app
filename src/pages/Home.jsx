@@ -52,16 +52,16 @@ function Home() {
         return ''
     }
     return (
-        <div className='w-full min-h-screen py-8 '>
+        <div className='w-full min-h-screen py-8 px-3'>
             <Container>
                 <div className='flex flex-wrap gap-2 md:gap-4 text-center items-center justify-evenly'>
                     {posts && posts.length !== 0 ? posts.map((post) => (
-                        <div key={post.$id} className='p-3 md:w-1/5'>
+                        <div key={post.$id} className='p-3 md:w-1/4 h-auto'>
                             <PostCard post={post} />
                         </div>
                     )) :
                         <div className='p-2 w-full'>
-                            <h1 className='text-2xl text-center  text-white font-bold hover:text-gray-500'>
+                            <h1 className='text-lg md:text-2xl text-center  text-white font-bold hover:text-gray-500'>
                                 No Posts Available
                             </h1>
                         </div>

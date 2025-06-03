@@ -1,47 +1,41 @@
 import { Client, ID, Databases, Storage, Query, Permission, Role } from "appwrite";
 import conf from "../conf/conf";
 // query is used to filter, sort, and paginate data
-export class DatabaseService{
+export class DatabaseService {
     client = new Client();
     database;
     storage;
 
     constructor() {
         this.client
-            
+
             .setEndpoint(conf.appwriteUrl)
             .setProject(conf.appwriteProjectId)
         this.database = new Databases(this.client)
         this.storage = new Storage(this.client)
     };
-    
+
     //  post service
-    async creatPost ({title, slug, content, status, featuredImage, userId}) {
+    async creatPost({ title, slug, content, status, featuredImage, userId }) {
         try {
-           return await this.database.createDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, slug,{
+            return await this.database.createDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, slug, {
                 title,
                 content,
                 status,
                 featuredImage,
                 userId
             },
-            [
-                Permission.read(Role.any()),                         // anyone can read
-  Permission.create(Role.any()),                       // anyone (even not logged in) can create
-  Permission.update(Role.user(userId)),                // only that user can update
-  Permission.delete(Role.user(userId)), 
+                
 
-            ]
-        
-        )
+            )
         } catch (error) {
             console.log("appwrite : post :error", error);
         }
     };
 
-    async updatePost (slug, {title, content, status, featuredImage}) {
+    async updatePost(slug, { title, content, status, featuredImage }) {
         try {
-           return await this.database.updateDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, slug,{
+            return await this.database.updateDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, slug, {
                 title,
                 content,
                 status,
@@ -49,11 +43,11 @@ export class DatabaseService{
             })
         } catch (error) {
             console.log("appwrite : updatePost : error", error)
-            
+
         }
     };
 
-    async deletePost(slug){
+    async deletePost(slug) {
         try {
             await this.database.deleteDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, slug)
             return true;
@@ -63,7 +57,7 @@ export class DatabaseService{
         }
     };
 
-    async getPost(slug){
+    async getPost(slug) {
         try {
             return await this.database.getDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, slug)
         } catch (error) {
@@ -72,11 +66,11 @@ export class DatabaseService{
         }
     };
 
-    async getPosts(userId){
+    async getPosts(userId) {
         try {
             return this.database.listDocuments(conf.appwriteDatabaseId, conf.appwriteCollectionId, [Query.equal("userId", [userId])],
-        
-        )
+
+            )
         } catch (error) {
             console.log("appwrite : getPosts : error", error);
             return false;
@@ -84,18 +78,13 @@ export class DatabaseService{
     };
 
     // file uplode service
-    async uploadFile(file, userId){
+    async uploadFile(file, userId) {
         try {
-            const storageData =  await this.storage.createFile(conf.appwriteBucketId, ID.unique(), file,
-        
-        [
-          Permission.read(Role.any()),
-            
-                Permission.update(Role.user(userId)),          // allow update for owner only
-                Permission.delete(Role.user(userId)) 
-        ]
-    )
-        
+            const storageData = await this.storage.createFile(conf.appwriteBucketId, ID.unique(), file,
+
+             
+            )
+
             if (storageData) {
 
                 return storageData;
@@ -103,33 +92,33 @@ export class DatabaseService{
         } catch (error) {
             console.log("appwrite : uploadeFile : error", error);
             return false;
-            
+
         }
     };
 
-    async deleteFile(fileId){
+    async deleteFile(fileId) {
         try {
-            await this.storage.deleteFile(conf.appwriteBucketId,fileId)
+            await this.storage.deleteFile(conf.appwriteBucketId, fileId)
             return true;
         } catch (error) {
             console.log("appwrite : deleteFile : error", error);
             return false;
-            
+
         }
     };
 
-    getFilePreview(fileId){
+    getFilePreview(fileId) {
         try {
-            const result =  this.storage.getFileView(conf.appwriteBucketId, fileId)
+            const result = this.storage.getFileView(conf.appwriteBucketId, fileId)
             console.log("getFilePreview", result);
             if (result) {
                 return result;
             }
-            
+
         } catch (error) {
             console.log("appwrite : getfilePreviw : error", error);
             return false;
-            
+
         }
     }
 }

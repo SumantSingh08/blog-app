@@ -68,7 +68,7 @@ export default function Post() {
                     )}
                 </div>
                 <div className="w-full  mb-6 flex justify-between">
-                    <h1 className="text-2xl mx-auto text-white font-bold">{post.title}</h1>
+                    <h1 className="text-lg md:text-2xl mx-auto text-white font-bold">{post.title}</h1>
                     
                 </div>
                 <div className="browser-css text-center">

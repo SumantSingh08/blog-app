@@ -28,7 +28,7 @@ function AllPost() {
                 <Container>
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
-                            <h1 className="text-2xl text-white font-bold hover:text-gray-500">
+                            <h1 className="text-lg md:text-2xl text-white font-bold hover:text-gray-500">
                                 Loading Posts...
                             </h1>
                         </div>
@@ -39,7 +39,7 @@ function AllPost() {
     }
     
         return (
-            <div className='w-full min-h-screen py-8'>
+            <div className='w-full min-h-screen py-8 px-3'>
                 <Container>
                     <div className='flex flex-wrap gap-2 md:gap-6 justify-evenly '>
                         {posts && posts.length !== 0? posts.map((post) => (
@@ -48,7 +48,7 @@ function AllPost() {
                             </div>
                         )) :
                             <div className='w-full min-h-screen p-2 '>
-                                <h1 className='text-2xl text-center text-white font-bold hover:text-gray-500'>
+                                <h1 className='text-lg md:text-2xl text-center text-white font-bold hover:text-gray-500'>
                                     No Posts Found
                                 </h1>
                             </div>
