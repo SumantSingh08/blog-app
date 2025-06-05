@@ -37,8 +37,8 @@ function Header() {
         }
     ]
     return (
-        <header className='fixed top-0 left-1/2 transform -translate-x-1/2 w-full md:max-w-3xl lg:max-w-5xl text-md shadow-lg  md:rounded-full md:my-4  md:px-15  text-gray-700  bg-white text-lg z-50 '> 
-                <nav className='w-full md:flex py-2  px-1  items-center md:justify-between md:gap-1 mx-auto '>
+        <header className='fixed top-0 left-1/2 transform -translate-x-1/2 w-full md:max-w-3xl lg:max-w-5xl  md:bg-slate-700 text-lg z-50 '> 
+                <nav className='w-full md:flex py-2  px-1  items-center md:justify-between md:gap-1 mx-auto text-md shadow-lg  md:rounded-full md:my-4  md:px-15  text-gray-700  bg-white'>
                     <div className='hidden  md:block  md:w-[30%] md:pr-6 font-bold my-auto'>
                         <Link>
                             <Logo  />

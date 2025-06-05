@@ -34,7 +34,7 @@ function Home() {
 
     if (!authStatus || !userId) {
         return (
-            <div className="w-full  py-8 mt-4 text-center">
+            <div className="w-full  py-8 mt-16 text-center">
                 <Container>
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
